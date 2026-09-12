@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#2F3A5F">
+  <title>PetCare Shop | Premium Pet Products & Care</title>
+
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- TOP BAR (always visible, all pages)          -->
+<!-- ============================================ -->
+<nav class="top-bar">
+  <div class="top-bar-left">
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <div class="logo-container">
+      <img src="pet-care-images/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+      <span class="title">PetCare</span>
+    </div>
+  </div>
+  <div class="top-actions">
+    <i class="fas fa-bell notification-icon" id="notifIcon" role="button" aria-label="Notifications" tabindex="0"></i>
+<i class="fas fa-shopping-cart cart-icon" id="cartIcon" role="button" aria-label="Shopping cart" tabindex="0"></i>
+    
+    <span class="cart-count" id="cartCount">0</span>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- PAGE: HOME                                   -->
+<!-- ============================================ -->
+<section class="page active" id="page-home">
+  <div class="page-container">
+
+    <!-- ============================================ -->
+<!-- GREETING — Scrapbook Vibe (v2.2)             -->
+<!-- ============================================ -->
+<div class="home-greeting greeting-scrapbook" id="greetingCard">
+  <div class="greeting-text">
+    <span class="greeting-sun">☀️</span>
+    <h2 id="greetingText" class="greeting-script">Good afternoon!</h2>
+    <p class="greeting-sub">How is our little <strong id="greetingPetName">Luna</strong> doing today? <span class="greeting-heart">♡</span></p>
+    <button class="greeting-action-btn" id="describeProblemBtn">
+      <span class="btn-paw">🐾</span> Check <span id="greetingPetNameBtn">Luna</span>'s day
+    </button>
+  </div>
+
+  <!-- Polaroid photo cluster -->
+  <div class="polaroid-cluster">
+    <div class="polaroid polaroid-back">
+      <div class="polaroid-img-wrap">
+        <img src="pet-care-images/pet1.png" alt="Luna moment" onerror="this.src='pet-care-images/logo.png'">
+      </div>
+      <p class="polaroid-caption">nap time ♡</p>
+    </div>
+    <div class="polaroid polaroid-front">
+      <div class="polaroid-img-wrap">
+        <img src="pet-care-images/pet.png" alt="Luna" onerror="this.src='pet-care-images/logo.png'">
+      </div>
+      <p class="polaroid-caption">my little sunshine ♡</p>
+    </div>
+  </div>
+</div>
+
+    <!-- ============================================ -->
+<!-- EMERGENCY SOS CARD (NEW)                     -->
+<!-- ============================================ -->
+<div class="home-card emergency-sos-card" id="emergencySosCard">
+  <div class="sos-pulse"></div>
+  <div class="sos-content">
+    <div class="sos-icon-wrap">
+      <i class="fas fa-triangle-exclamation"></i>
+    </div>
+    <div class="sos-text">
+      <h3>Emergency SOS</h3>
+      <p>Report injured, lost or abused animal near you</p>
+    </div>
+    <button class="sos-btn" id="sosReportBtn">
+      <i class="fas fa-bullhorn"></i> Report Now
+    </button>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- LUNA'S WEEK — Paw Timeline (v2.2)            -->
+<!-- ============================================ -->
+<div class="home-card week-card" id="weekProgressCard">
+  
+  <!-- Decorative top tape -->
+  <div class="week-tape week-tape-left"></div>
+  <div class="week-tape week-tape-right"></div>
+
+  <div class="week-header">
+    <div class="week-header-left">
+      <h3 class="week-title week-title-script">
+        <span class="week-title-leaf">🌿</span>
+        <span id="weekPetName">Luna</span>'s Week
+      </h3>
+      <p class="week-subtitle">Keep the little paws moving!</p>
+    </div>
+    <div class="week-streak-badge">
+      <span class="streak-flame">🔥</span>
+      <span id="statStreak">5</span> day happy streak
+    </div>
+  </div>
+
+  <div class="week-timeline" id="weekTimeline">
+    <!-- JS populates 7 day paw checkpoints -->
+  </div>
+
+  <div class="week-footer-stats">
+    <div class="mini-stat">
+      <span class="mini-stat-icon">🏆</span>
+      <span class="mini-stat-value" id="statOrders">0</span>
+      <span class="mini-stat-label">orders</span>
+    </div>
+    <div class="mini-stat-divider"></div>
+    <div class="mini-stat">
+      <span class="mini-stat-icon">💚</span>
+      <span class="mini-stat-value" id="statLogs">0</span>
+      <span class="mini-stat-label">health logs</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- NEARBY EMERGENCY VETS (NEW)                  -->
+<!-- ============================================ -->
+<div class="home-card vet-finder-card">
+  <div class="home-card-header">
+    <h3><i class="fas fa-hospital"></i> Nearby Emergency Vets</h3>
+    <span style="font-size:11px; color:#94A3B8; font-weight:600;">3 nearby</span>
+  </div>
+  <div class="vet-list" id="homeVetList">
+    <!-- JS populates -->
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FIRST-AID QUICK GUIDES (NEW)                 -->
+<!-- ============================================ -->
+<div class="home-card firstaid-card">
+  <div class="home-card-header">
+    <h3><i class="fas fa-kit-medical"></i> Quick First-Aid</h3>
+    <span class="urgent-tag">3-min guides</span>
+  </div>
+  <div class="firstaid-grid" id="firstaidGrid">
+    <!-- JS populates -->
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- MEMORIES CARD (NEW)                          -->
+<!-- ============================================ -->
+<div class="home-card memories-card" id="memoriesCard">
+  <div class="home-card-header">
+    <h3><i class="fas fa-camera-retro"></i> Memories</h3>
+    <button class="card-link-btn" id="openMemoriesBtn">Open →</button>
+  </div>
+  <p class="memories-tagline">Share moments · Learn from vets · Spread awareness</p>
+
+<div style="margin-bottom:12px;">
+  <span id="memoriesRoleBadgeHome" style="font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;background:#EEF2FF;color:#5372F0;">
+    🐾 Pet Owner
+  </span>
+</div>
+  
+  <div class="memories-preview-row" id="memoriesPreview">
+    <!-- JS populates 3 mini preview cards -->
+  </div>
+  <div class="memories-stats">
+    <span><i class="fas fa-images"></i> <strong id="memoriesPostCount">0</strong> posts</span>
+    <span><i class="fas fa-user-md"></i> <strong id="memoriesVetCount">0</strong> vets</span>
+  </div>
+</div>
+    
+<!-- ============================================ -->
+<!-- URGENT FOSTER / ADOPTION (NEW)               -->
+<!-- ============================================ -->
+<div class="home-card foster-card">
+  <div class="home-card-header">
+    <h3><i class="fas fa-house-chimney-medical"></i> Urgent Foster Needed</h3>
+    <button class="card-link-btn" data-goto="shop">Adopt →</button>
+  </div>
+  <div class="foster-scroll" id="fosterScroll">
+    <!-- JS populates -->
+  </div>
+</div>
+
+    <!-- Today's Care Preview -->
+    <div class="home-card" id="todayCareCard">
+      <div class="home-card-header">
+        <h3><i class="fas fa-paw"></i> Today's Care</h3>
+        <button class="card-link-btn" data-goto="care">View →</button>
+      </div>
+      <div class="today-care-grid" id="homeCareGrid">
+        <!-- JS populates: feeding, water, exercise, grooming -->
+      </div>
+    </div>
+
+    <!-- Daily Tip -->
+    <div class="home-card tip-card">
+      <div class="home-card-header">
+        <h3><i class="fas fa-lightbulb"></i> Today's Tip</h3>
+        <button class="card-link-btn" id="nextTipBtn">Next →</button>
+      </div>
+      <p class="tip-text" id="homeTipText">Loading tip...</p>
+      <button class="card-link-btn full-width" data-goto="care" data-care-tab="tips">
+        See all care tips →
+      </button>
+    </div>
+
+    <!-- Recommended for Pet -->
+    <div class="home-card">
+      <div class="home-card-header">
+        <h3><i class="fas fa-star"></i> Recommended for <span id="recPetName">Luna</span></h3>
+        <button class="card-link-btn" data-goto="shop">Shop →</button>
+      </div>
+      <div class="recommended-scroll" id="homeRecommended">
+        <!-- JS populates product mini-cards -->
+      </div>
+    </div>
+
+    <!-- Recent Order -->
+    <div class="home-card" id="recentOrderCard" style="display:none;">
+      <div class="home-card-header">
+        <h3><i class="fas fa-box"></i> Recent Order</h3>
+        <button class="card-link-btn" data-goto="profile" data-profile-tab="orders">All Orders →</button>
+      </div>
+      <div id="homeRecentOrder"><!-- JS populates --></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PAGE: CARE                                   -->
+<!-- ============================================ -->
+<section class="page" id="page-care">
+  <div class="page-container">
+
+    <!-- My Pets -->
+    <div class="care-section">
+      <div class="care-section-header">
+        <h2>My Pets</h2>
+        <button class="add-pet-btn" id="addPetBtn"><i class="fas fa-plus"></i> Add</button>
+      </div>
+      <div class="pets-list" id="petsList">
+        <!-- JS populates pet cards -->
+      </div>
+    </div>
+
+    <!-- Care Tabs -->
+    <div class="care-tabs">
+      <button class="care-tab active" data-care-tab="health">Health</button>
+      <button class="care-tab" data-care-tab="daily">Daily</button>
+      <button class="care-tab" data-care-tab="reminders">Reminders</button>
+      <button class="care-tab" data-care-tab="guidance">Guidance</button>
+      <button class="care-tab" data-care-tab="tips">Tips</button>
+    </div>
+
+    <!-- Tab: Health -->
+<div class="care-tab-content active" id="careTab-health">
+  <div class="care-section">
+    <div class="care-section-header">
+      <h3><i class="fas fa-heartbeat"></i> Health Log</h3>
+      <button class="mini-add-btn" id="addHealthLogBtn"><i class="fas fa-plus"></i> Add</button>
+    </div>
+    <div class="health-log" id="healthLogList">
+      <!-- JS populates timeline -->
+    </div>
+  </div>
+
+  <div class="care-section">
+    <div class="care-section-header">
+      <h3><i class="fas fa-syringe"></i> Vaccinations</h3>
+      <button class="mini-add-btn" id="addVaxBtn"><i class="fas fa-plus"></i> Add</button>
+    </div>
+    <div class="vax-list" id="vaxList">
+      <!-- JS populates -->
+    </div>
+  </div>
+
+  <div class="care-section">
+    <div class="care-section-header">
+      <h3><i class="fas fa-pills"></i> Medications</h3>
+      <button class="mini-add-btn" id="addMedBtn"><i class="fas fa-plus"></i> Add</button>
+    </div>
+    <div class="med-list" id="medList">
+      <!-- JS populates -->
+    </div>
+  </div>
+
+  <div class="care-section">
+    <h3><i class="fas fa-chart-line"></i> Weight Progress</h3>
+    <canvas id="careWeightChart" height="180"></canvas>
+  </div>
+</div>
+
+    <!-- Tab: Daily Care -->
+    <div class="care-tab-content" id="careTab-daily">
+      <div class="care-section">
+        <h3><i class="fas fa-calendar-day"></i> Today's Care</h3>
+        <p class="date-label" id="dailyDateLabel"></p>
+        <div class="daily-care-list" id="dailyCareList">
+          <!-- JS populates checkboxes: feeding, water, exercise, grooming -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Reminders -->
+<div class="care-tab-content" id="careTab-reminders">
+  <div class="care-section">
+    <div class="care-section-header">
+      <h3><i class="fas fa-bell"></i> Upcoming</h3>
+      <button class="mini-add-btn" id="addReminderBtn"><i class="fas fa-plus"></i> Add</button>
+    </div>
+    <div class="reminders-list" id="remindersList">
+      <!-- JS populates -->
+    </div>
+  </div>
+</div>
+
+    <!-- Tab: Health Guidance -->
+    <div class="care-tab-content" id="careTab-guidance">
+      <div class="care-section">
+        <h3><i class="fas fa-stethoscope"></i> Pet Health Guidance</h3>
+        <p class="section-desc">What is happening to your pet?</p>
+
+        <div class="symptom-input">
+          <input type="text" id="symptomInput" placeholder="Describe a problem...">
+          <button id="symptomSearchBtn"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="common-concerns">
+          <p class="concern-label">Common concerns:</p>
+          <div class="concern-chips">
+            <button class="concern-chip" data-symptom="not-eating">🍽️ Not eating</button>
+            <button class="concern-chip" data-symptom="vomiting">🤢 Vomiting</button>
+            <button class="concern-chip" data-symptom="itching">🐾 Itching</button>
+            <button class="concern-chip" data-symptom="coughing">😷 Coughing</button>
+            <button class="concern-chip" data-symptom="diarrhea">💧 Diarrhea</button>
+            <button class="concern-chip" data-symptom="lethargy">😴 Lethargy</button>
+          </div>
+        </div>
+
+        <div class="guidance-result" id="guidanceResult">
+          <!-- JS populates advice card -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Tips Library -->
+    <div class="care-tab-content" id="careTab-tips">
+      <div class="care-section">
+        <h3><i class="fas fa-book-open"></i> Care Tips Library</h3>
+        <div class="tips-categories">
+          <button class="tip-cat-chip active" data-tip-cat="nutrition">Nutrition</button>
+          <button class="tip-cat-chip" data-tip-cat="hygiene">Hygiene</button>
+          <button class="tip-cat-chip" data-tip-cat="exercise">Exercise</button>
+          <button class="tip-cat-chip" data-tip-cat="grooming">Grooming</button>
+          <button class="tip-cat-chip" data-tip-cat="safety">Safety</button>
+          <button class="tip-cat-chip" data-tip-cat="behavior">Behavior</button>
+        </div>
+        <div class="tips-list" id="tipsList">
+          <!-- JS populates -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PAGE: MEMORIES (full-screen, not in bottom nav) -->
+<!-- ============================================ -->
+<section class="page" id="page-memories">
+  <div class="page-container">
+
+    <!-- Header with Back Button -->
+    <div class="memories-header">
+      <button class="memories-back-btn" id="memoriesBackBtn">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h2> Memories <span id="memoriesRoleBadge" style="font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:8px;vertical-align:middle;">🐾 Pet Owner</span></h2>
+      <button class="memories-post-btn" id="memoriesPostBtn">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+
+    <!-- Filter Chips -->
+    <div class="memories-filters">
+      <button class="mem-filter-chip active" data-filter="all">🌐 All</button>
+      <button class="mem-filter-chip" data-filter="tip">💡 Vet Tips</button>
+      <button class="mem-filter-chip" data-filter="story">🐾 Pet Stories</button>
+      <button class="mem-filter-chip" data-filter="awareness">📢 Awareness</button>
+      <button class="mem-filter-chip" data-filter="question">❓ Questions</button>
+    </div>
+
+    <!-- Feed -->
+    <div class="memories-feed" id="memoriesFeed">
+      <!-- JS populates posts -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="memories-empty" id="memoriesEmpty" style="display:none;">
+      <i class="fas fa-images"></i>
+      <p>No posts yet. Share your first memory!</p>
+      <button class="vet-action-btn primary" onclick="openMemoryPostModal()">
+        <i class="fas fa-plus"></i> Create Post
+      </button>
+    </div>
+
+  </div>
+</section>
+  
+<!-- ============================================ -->
+<!-- PAGE: SHOP                                   -->
+<!-- ============================================ -->
+<section class="page" id="page-shop">
+  <div class="page-container">
+
+    <!-- Search -->
+    <div class="search-section">
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="liveSearch" placeholder="Search products..." class="search-input">
+        <button class="search-clear" id="searchClear" style="display:none;">✕</button>
+      </div>
+      <div class="search-results-count" id="searchResultsCount"></div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-slider" id="heroSlider">
+        <div class="hero-slide active"><div class="hero-content"><span class="hero-badge">Limited Time</span><h2>50% Off First Order</h2><p>Use code: PETCARE50</p><button class="hero-btn shop-now-btn">Shop Now</button></div></div>
+        <div class="hero-slide"><div class="hero-content"><span class="hero-badge">Free Shipping</span><h2>Free Delivery on $50+</h2><p>All over the country</p><button class="hero-btn shop-now-btn">Shop Now</button></div></div>
+        <div class="hero-slide"><div class="hero-content"><span class="hero-badge">New Arrivals</span><h2>Summer Collection 2025</h2><p>Fresh styles for your pet</p><button class="hero-btn shop-now-btn">Explore</button></div></div>
+      </div>
+      <button class="hero-prev" id="heroPrev">❮</button>
+      <button class="hero-next" id="heroNext">❯</button>
+      <div class="hero-dots" id="heroDots"></div>
+    </section>
+
+    <!-- Sort & Filter -->
+    <section class="sort-filter-bar">
+      <div class="sort-filter-container">
+        <div class="sort-section">
+          <label>Sort by:</label>
+          <select id="sortSelect">
+            <option value="default">Default</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Rating: Highest First</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+        <div class="price-filter-section">
+          <label>Price: $<span id="priceMin">0</span> - $<span id="priceMax">500</span></label>
+          <input type="range" id="priceRange" min="0" max="500" value="500" step="10">
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="category-filter">
+      <div class="filter-container">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="adoption">Adoption</button>
+        <button class="filter-btn" data-category="food">Pet Food</button>
+        <button class="filter-btn" data-category="accessories">Accessories</button>
+      </div>
+    </section>
+
+    <!-- Skeleton -->
+    <div class="skeleton-container" id="skeletonContainer">
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+      <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+    </div>
+
+    <!-- Product Sections -->
+    <main class="main-content" id="mainContent" style="display:none;">
+      <section class="container swiper-section" data-section="adoption" id="sectionAdoption">
+        <div class="section-header"><h2 class="section-head">Pet Adoption</h2><div class="section-line"></div></div>
+        <div class="card-wrapper adoption-wrapper">
+          <ul class="card-list swiper-wrapper" id="adoptionList"></ul>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <section class="container swiper-section" data-section="food" id="sectionFood">
+        <div class="section-header"><h2 class="section-head">Pet Food</h2><div class="section-line"></div></div>
+        <div class="card-wrapper food-wrapper">
+          <ul class="card-list swiper-wrapper" id="foodList"></ul>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <section class="container swiper-section" data-section="accessories" id="sectionAccessories">
+        <div class="section-header"><h2 class="section-head">Pet Accessories</h2><div class="section-line"></div></div>
+        <div class="card-wrapper accessories-wrapper">
+          <ul class="card-list swiper-wrapper" id="accessoriesList"></ul>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <div class="no-results" id="noResults" style="display:none;"><p>No products found matching your search.</p></div>
+    </main>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PAGE: PROFILE                                -->
+<!-- ============================================ -->
+<section class="page" id="page-profile">
+  <div class="page-container">
+
+    <!-- User Info -->
+<div class="profile-header">
+  <div class="profile-avatar" id="profileAvatar">L</div>
+  <h3 id="profileName">Guest User <span id="profileVetTag"></span></h3>
+  <p id="profileEmail">guest@petcare.shop</p>
+  <div style="margin-top:12px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+    <button class="edit-profile-btn" id="editProfileBtn">Edit Profile</button>
+    <button class="edit-profile-btn" onclick="showRoleChoiceModal()" style="background:#F5F3FF; color:#6D28D9;">
+      <i class="fas fa-sync-alt"></i> Switch Role
+    </button>
+  </div>
+</div>
+
+    <!-- My Pets shortcut -->
+    <div class="profile-section">
+      <div class="profile-section-header">
+        <h3><i class="fas fa-paw"></i> My Pets</h3>
+        <button class="card-link-btn" data-goto="care">Manage →</button>
+      </div>
+      <div class="profile-pets-row" id="profilePetsRow">
+        <!-- JS populates pet chips -->
+      </div>
+    </div>
+
+    <!-- Orders -->
+    <div class="profile-section">
+      <div class="profile-section-header">
+        <h3><i class="fas fa-box"></i> My Orders</h3>
+        <select id="orderFilter" class="mini-select">
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="shipped">Shipped</option>
+          <option value="delivered">Delivered</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="orders-container" id="profileOrdersList">
+        <!-- JS populates -->
+      </div>
+    </div>
+
+    <!-- Wishlist shortcut -->
+    <div class="profile-section">
+      <div class="profile-section-header">
+        <h3><i class="fas fa-heart"></i> Wishlist</h3>
+        <button class="card-link-btn" id="profileWishlistBtn">View →</button>
+      </div>
+      <p class="section-desc" id="wishlistCountText">0 items saved</p>
+    </div>
+
+    <!-- Notifications -->
+    <div class="profile-section">
+      <div class="profile-section-header">
+        <h3><i class="fas fa-bell"></i> Notifications</h3>
+        <button class="card-link-btn" id="profileNotifBtn">View →</button>
+      </div>
+      <p class="section-desc" id="notifCountText">0 notifications</p>
+    </div>
+
+    <!-- Settings -->
+    <div class="profile-section" id="profileSettingsSection">
+      <div class="profile-section-header">
+        <h3><i class="fas fa-cog"></i> Settings</h3>
+      </div>
+      <div class="settings-list">
+        <label class="settings-row">
+          <span>Dark Mode</span>
+          <input type="checkbox" id="settingsDarkMode">
+        </label>
+        <label class="settings-row">
+          <span>Order Notifications</span>
+          <input type="checkbox" checked>
+        </label>
+        <label class="settings-row">
+          <span>Care Reminders</span>
+          <input type="checkbox" checked>
+        </label>
+      </div>
+      <button class="settings-btn" id="exportDataBtn">Export Data (JSON)</button>
+      <button class="settings-btn danger" id="clearDataBtn">Clear All Data</button>
+      <p class="app-version">PetCare v2.0.0 · © 2026</p>
+    </div>
+
+    <!-- Auth -->
+    <div class="profile-section">
+      <button class="auth-action-btn" id="profileAuthBtn">Login / Sign Up</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- MODALS                                       -->
+<!-- ============================================ -->
+
+<!-- ============================================ -->
+<!-- USER TYPE CHOICE MODAL                       -->
+<!-- ============================================ -->
+<div class="modal" id="userTypeModal">
+  <div class="modal-content" style="text-align:center; max-width: 480px;">
+    <i class="fas fa-times close-modal" id="closeUserTypeModal"></i>
+    <div style="font-size:52px; margin-bottom:8px;">🐾</div>
+    <h2 class="modal-title" style="padding:0; margin-bottom:6px;">Choose Your Role</h2>
+    <p style="color:#64748B; font-size:13.5px; margin-bottom:22px;">
+      How do you want to use PetCare?
+    </p>
+
+    <div class="role-choice-grid">
+      <button class="role-choice-card" data-role="normal">
+        <div class="role-icon" style="background:linear-gradient(135deg,#3B82F6,#2563EB);">
+          <i class="fas fa-user"></i>
+        </div>
+        <h4>Pet Owner</h4>
+        <p>Post updates, ask vets, manage pets</p>
+      </button>
+
+      <button class="role-choice-card" data-role="vet">
+        <div class="role-icon" style="background:linear-gradient(135deg,#10B981,#059669);">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <h4>Veterinarian</h4>
+        <p>Share tips, answer questions, post cases</p>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- VET LICENSE FORM MODAL                       -->
+<!-- ============================================ -->
+<div class="modal" id="vetLicenseModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeVetLicenseModal"></i>
+    <div style="text-align:center; margin-bottom:20px;">
+      <div style="font-size:48px; margin-bottom:6px;">👨‍⚕️</div>
+      <h2 class="modal-title" style="padding:0; margin-bottom:6px;">Vet Verification</h2>
+      <p style="color:#64748B; font-size:13px;">Fill in your professional details</p>
+    </div>
+
+    <form id="vetLicenseForm">
+      <label class="mem-form-label">Full Name *</label>
+      <input type="text" id="vetLicName" placeholder="Dr. Aisha Rahman" required>
+
+      <label class="mem-form-label">License Number *</label>
+      <input type="text" id="vetLicNumber" placeholder="BD-VET-2024-XXX" required>
+
+      <label class="mem-form-label">Specialty *</label>
+      <select id="vetLicSpecialty" required>
+        <option value="">— Select —</option>
+        <option value="General Veterinarian">General Veterinarian</option>
+        <option value="Veterinary Surgeon">Veterinary Surgeon</option>
+        <option value="Dermatologist">Dermatologist</option>
+        <option value="Dentist">Dentist</option>
+        <option value="Cardiologist">Cardiologist</option>
+        <option value="Emergency & Critical Care">Emergency & Critical Care</option>
+      </select>
+
+      <label class="mem-form-label">Years of Experience *</label>
+      <input type="number" id="vetLicExperience" placeholder="8" min="0" max="60" required>
+
+      <label class="mem-form-label">Hospital / Clinic *</label>
+      <input type="text" id="vetLicHospital" placeholder="Dhaka Pet Care Center" required>
+
+      <label class="mem-form-label">Contact Email *</label>
+      <input type="email" id="vetLicEmail" placeholder="vet@example.com" required>
+
+      <div class="mem-form-checkbox">
+        <input type="checkbox" id="vetLicAgree" required>
+        <label for="vetLicAgree">I confirm the above information is accurate</label>
+      </div>
+
+      <button type="submit" class="checkout-submit-btn" style="background:linear-gradient(135deg,#10B981,#059669);">
+        <i class="fas fa-check-circle"></i> Submit & Continue
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- CREATE MEMORY POST MODAL                     -->
+<!-- ============================================ -->
+<div class="modal" id="memoryPostModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeMemoryPostModal"></i>
+    <h2 class="modal-title" id="memoryPostModalTitle">📸 Share a Memory</h2>
+
+    <form id="memoryPostForm">
+      <label class="mem-form-label">Photo (optional)</label>
+      <div class="mem-photo-upload" id="memPhotoUpload">
+        <i class="fas fa-camera"></i>
+        <span>Tap to add photo</span>
+      </div>
+      <input type="file" id="memPhotoInput" accept="image/*" style="display:none;">
+
+      <label class="mem-form-label">Description *</label>
+      <textarea id="memPostContent" placeholder="Write your memory, tip, or question here..." rows="5" required></textarea>
+
+      <button type="submit" class="checkout-submit-btn">
+        <i class="fas fa-paper-plane"></i> Publish
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- COMMENT MODAL                                -->
+<!-- ============================================ -->
+<div class="modal" id="commentModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeCommentModal"></i>
+    <h2 class="modal-title">💬 Comments</h2>
+
+    <div class="comment-list" id="commentList"></div>
+
+    <form class="comment-form" id="commentForm">
+      <input type="text" id="commentInput" placeholder="Write a comment..." required>
+      <button type="submit"><i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
+</div>
+  
+<!-- ============================================ -->
+<!-- EMERGENCY SOS MODAL                          -->
+<!-- ============================================ -->
+<div class="modal" id="sosModal">
+  <div class="modal-content modal-large">
+    <i class="fas fa-times close-modal" id="closeSosModal"></i>
+
+    <div class="sos-modal-header">
+      <i class="fas fa-triangle-exclamation"></i>
+      <div>
+        <h3>🚨 Emergency Report</h3>
+        <p>Report injured, lost, or abused animal near you</p>
+      </div>
+    </div>
+
+    <form id="sosForm">
+      <label for="sosType">What's the situation?</label>
+      <select id="sosType" required>
+        <option value="">— Select a type —</option>
+        <option value="injured">🩸 Injured animal</option>
+        <option value="lost">🔍 Lost pet</option>
+        <option value="abused">⚠️ Abused / Neglected</option>
+        <option value="trapped">🪤 Trapped / Stuck</option>
+        <option value="other">❓ Other emergency</option>
+      </select>
+
+      <label for="sosDescription">Describe briefly</label>
+      <textarea id="sosDescription" placeholder="E.g. Injured street dog near Dhanmondi Lake, bleeding from leg..." required></textarea>
+
+      <label>Your location</label>
+      <div class="sos-location-box">
+        <i class="fas fa-map-marker-alt"></i>
+        <span id="sosLocationText">📍 Detecting your location...</span>
+      </div>
+
+      <label>Photo evidence (optional)</label>
+      <div class="sos-photo-upload" id="sosPhotoUpload">
+        <i class="fas fa-camera"></i>
+        <span>Tap to attach a photo</span>
+      </div>
+
+      <button type="submit" class="sos-submit-btn">
+        <i class="fas fa-paper-plane"></i>
+        SEND EMERGENCY ALERT
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- FOSTER PET DETAIL MODAL                      -->
+<!-- ============================================ -->
+<div class="modal" id="fosterModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeFosterModal"></i>
+    <div id="fosterModalBody"></div>
+  </div>
+</div>
+
+  
+<!-- ============================================ -->
+<!-- FIRST-AID GUIDE MODAL                        -->
+<!-- ============================================ -->
+<div class="modal" id="firstaidModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeFirstaidModal"></i>
+
+    <div class="firstaid-modal-header" id="firstaidHeader">
+  <div class="fa-header-pattern"></div>
+  <div class="fa-icon-orbit">
+    <span class="fa-orbit-ring ring-1"></span>
+    <span class="fa-orbit-ring ring-2"></span>
+    <div class="fa-icon-circle">
+      <i class="fas fa-heart-pulse" id="faModalIcon"></i>
+    </div>
+  </div>
+  <h3 id="faModalTitle">CPR</h3>
+  <p id="faModalSubtitle">Not breathing / no pulse</p>
+</div>
+
+    <h4 style="color:#2F3A5F; font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">
+      ✅ Do this now:
+    </h4>
+    <ol class="firstaid-steps" id="firstaidSteps"></ol>
+
+    <div class="firstaid-dont-box">
+      <h4><i class="fas fa-ban"></i> Do NOT</h4>
+      <p id="firstaidDont">Never stick fingers blindly.</p>
+    </div>
+
+    <button class="firstaid-call-btn" id="firstaidCallBtn">
+      <i class="fas fa-phone-volume"></i> Call Emergency Vet Now
+    </button>
+  </div>
+</div>
+  
+<!-- Quick View -->
+<div class="modal" id="quickViewModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeQuickViewModal"></i>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- Wishlist -->
+<div class="modal" id="wishlistModal">
+  <div class="modal-content modal-large">
+    <i class="fas fa-times close-modal" id="closeWishlistModal"></i>
+    <h2 class="modal-title">My Wishlist</h2>
+    <div id="wishlistItems" class="wishlist-items"></div>
+  </div>
+</div>
+
+<!-- Checkout -->
+<div class="modal" id="checkoutModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeCheckoutModal"></i>
+    <h2 class="modal-title">Checkout</h2>
+    <form id="checkoutForm">
+      <input type="text" id="checkoutName" placeholder="Full Name" required>
+      <input type="email" id="checkoutEmail" placeholder="Email Address" required>
+      <input type="tel" id="checkoutPhone" placeholder="Phone Number" required>
+      <textarea id="checkoutAddress" placeholder="Delivery Address" rows="3" required></textarea>
+      <div class="order-summary" id="orderSummary"></div>
+      <button type="submit" class="checkout-submit-btn">Place Order</button>
+    </form>
+  </div>
+</div>
+
+<!-- Tracking -->
+<div class="modal" id="trackingModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeTrackingModal"></i>
+    <h2 class="modal-title">Track Your Order</h2>
+    <input type="text" id="trackingId" placeholder="Enter Order ID">
+    <button id="trackOrderBtn" class="track-btn">Track Order</button>
+    <div id="trackingResult" class="tracking-result"></div>
+  </div>
+</div>
+
+<!-- Review -->
+<div class="modal" id="reviewModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeReviewModal"></i>
+    <h2 class="modal-title">Write a Review</h2>
+    <div class="review-stars" id="reviewStars">
+      <i class="far fa-star" data-rating="1"></i>
+      <i class="far fa-star" data-rating="2"></i>
+      <i class="far fa-star" data-rating="3"></i>
+      <i class="far fa-star" data-rating="4"></i>
+      <i class="far fa-star" data-rating="5"></i>
+    </div>
+    <textarea id="reviewText" placeholder="Share your experience..." rows="4"></textarea>
+    <button id="submitReviewBtn" class="submit-review-btn">Submit Review</button>
+  </div>
+</div>
+
+<!-- Login / Signup -->
+<div class="modal" id="loginModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeLoginModal"></i>
+    <h2 class="modal-title">🐾 Welcome to PetCare</h2>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-auth="login">Login</button>
+      <button class="auth-tab" data-auth="signup">Sign Up</button>
+    </div>
+
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" class="auth-submit-btn">Login</button>
+    </form>
+
+    <form id="signupForm" style="display:none;">
+      <input type="text" id="signupName" placeholder="Full Name" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
+      <button type="submit" class="auth-submit-btn">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+<!-- Add / Edit Pet -->
+<div class="modal" id="petModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closePetModal"></i>
+    <h2 class="modal-title" id="petModalTitle">Add Pet</h2>
+    <form id="petForm">
+      <input type="text" id="petName" placeholder="Pet Name" required>
+      <select id="petSpecies" required>
+        <option value="">Species</option>
+        <option value="cat">Cat</option>
+        <option value="dog">Dog</option>
+        <option value="bird">Bird</option>
+        <option value="other">Other</option>
+      </select>
+      <input type="text" id="petBreed" placeholder="Breed">
+      <input type="number" id="petAge" placeholder="Age (years)" step="0.1">
+      <input type="number" id="petWeight" placeholder="Weight (kg)" step="0.1">
+      <select id="petGender">
+        <option value="">Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <input type="text" id="petAllergies" placeholder="Allergies (optional)">
+      <button type="submit" class="checkout-submit-btn">Save Pet</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- EDIT PROFILE MODAL                           -->
+<!-- ============================================ -->
+<div class="modal" id="editProfileModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeEditProfileModal"></i>
+    <h2 class="modal-title">✏️ Edit Profile</h2>
+    <form id="editProfileForm">
+      <input type="text" id="editProfileName" placeholder="Full Name" required>
+      <input type="email" id="editProfileEmail" placeholder="Email" required>
+      <input type="tel" id="editProfilePhone" placeholder="Phone (optional)">
+      <input type="text" id="editProfileCity" placeholder="City (optional)">
+      <button type="submit" class="checkout-submit-btn">Save Changes</button>
+    </form>
+  </div>
+</div>
+
+  
+<!-- Notifications -->
+<div class="modal" id="notifModal">
+  <div class="modal-content modal-large">
+    <i class="fas fa-times close-modal" id="closeNotifModal"></i>
+    <h2 class="modal-title">🔔 Notifications</h2>
+    <div id="notifList"></div>
+  </div>
+</div>
+
+<!-- About Modal -->
+<div class="modal" id="aboutModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeAboutModal"></i>
+    <h2 class="modal-title">ℹ️ About PetCare</h2>
+    <div class="about-content">
+  <p><strong>PetCare v2.0.0</strong></p>
+  <p>A premium pet care companion — track health, manage daily care, shop for products, and get expert guidance.</p>
+  <p class="about-features-title"> Features:</p>
+  <ul class="about-features">
+    <li>🐾 Multi-pet health tracking with charts</li>
+    <li>💊 Vaccination & medication reminders</li>
+    <li>🩺 Rule-based symptom guidance</li>
+    <li>🛒 Pet shop with adoption & accessories</li>
+    <li>📦 Order tracking & history</li>
+    <li>🚨 Emergency SOS with live GPS</li>
+    <li>🏥 Nearby emergency vets finder</li>
+    <li>🩹 6 first-aid emergency guides</li>
+    <li>📸 Memories social feed</li>
+    <li>👨‍⚕️ Vet verification system</li>
+    <li>🐾 Urgent foster & adoption</li>
+    <li>💚 Multi-role (Pet Owner / Vet)</li>
+    <li>🌙 Dark mode support</li>
+    <li>💾 Offline-first (localStorage)</li>
+    <li>🔌 Backend-ready API layer</li>
+  </ul>
+  <p class="about-copyright">© 2026 PetCare. All rights reserved.</p>
+</div>
+  </div>
+</div>
+
+
+  <!-- ADD HEALTH LOG MODAL -->
+<div class="modal" id="healthLogModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeHealthLogModal"></i>
+    <h2 class="modal-title">📝 Add Health Log</h2>
+    <form id="healthLogForm">
+      <select id="healthLogType" required>
+        <option value="note">📝 General Note</option>
+        <option value="weight">⚖️ Weight</option>
+        <option value="temperature">🌡️ Temperature</option>
+        <option value="symptom">🩺 Symptom</option>
+      </select>
+      <input type="text" id="healthLogNote" placeholder="e.g. Weight: 4.5 kg" required>
+      <button type="submit" class="checkout-submit-btn">Save Entry</button>
+    </form>
+  </div>
+</div>
+
+<!-- ADD VACCINATION MODAL -->
+<div class="modal" id="vaxModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeVaxModal"></i>
+    <h2 class="modal-title">💉 Add Vaccination</h2>
+    <form id="vaxForm">
+      <input type="text" id="vaxName" placeholder="Vaccine name (e.g. Rabies)" required>
+      <label class="modal-checkbox-row">
+        <input type="checkbox" id="vaxDone"> Already completed
+      </label>
+      <button type="submit" class="checkout-submit-btn">Add Vaccination</button>
+    </form>
+  </div>
+</div>
+
+<!-- ADD MEDICATION MODAL -->
+<div class="modal" id="medModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeMedModal"></i>
+    <h2 class="modal-title">💊 Add Medication</h2>
+    <form id="medForm">
+      <input type="text" id="medName" placeholder="Medicine name" required>
+      <input type="text" id="medNextDose" placeholder="Next dose (e.g. Tomorrow 8 PM)" required>
+      <button type="submit" class="checkout-submit-btn">Add Medication</button>
+    </form>
+  </div>
+</div>
+
+<!-- ADD REMINDER MODAL -->
+<div class="modal" id="reminderModal">
+  <div class="modal-content">
+    <i class="fas fa-times close-modal" id="closeReminderModal"></i>
+    <h2 class="modal-title">🔔 Add Reminder</h2>
+    <form id="reminderForm">
+      <select id="reminderType" required>
+        <option value="medication">💊 Medication</option>
+        <option value="vaccination">💉 Vaccination</option>
+        <option value="grooming">✂️ Grooming</option>
+        <option value="checkup">🩺 Checkup</option>
+      </select>
+      <input type="text" id="reminderDate" placeholder="Date (e.g. Tomorrow, Sep 25)" required>
+      <input type="text" id="reminderLabel" placeholder="Label (e.g. Medicine — 8 PM)" required>
+      <button type="submit" class="checkout-submit-btn">Add Reminder</button>
+    </form>
+  </div>
+</div>
+
+  
+  
+
+<!-- ============================================ -->
+<!-- CART SIDEBAR                                 -->
+<!-- ============================================ -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Shopping Cart</h3>
+    <i class="fas fa-times close-cart" id="closeCart"></i>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="empty-cart"><p>Your cart is empty</p></div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TOAST                                        -->
+<!-- ============================================ -->
+<div class="toast" id="toast"><span class="toast-message" id="toastMessage"></span></div>
+
+<!-- ============================================ -->
+<!-- SIDE DRAWER (Hamburger Menu)                -->
+<!-- ============================================ -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="side-drawer" id="sideDrawer" aria-hidden="true">
+
+  <!-- User Header -->
+  <div class="drawer-user" id="drawerUserHeader">
+    <div class="drawer-avatar" id="drawerAvatar">?</div>
+    <div class="drawer-user-info">
+      <p class="drawer-user-name" id="drawerUserName">Welcome</p>
+      <p class="drawer-user-email" id="drawerUserEmail">Sign in to continue</p>
+    </div>
+  </div>
+
+  <!-- Sign-in Banner (only if guest) -->
+  <div class="drawer-signin-banner" id="drawerSigninBanner">
+    <p>🔓 Sign in to save your wishlist, orders &amp; pets</p>
+    <button class="drawer-signin-btn" id="drawerSigninBannerBtn">Sign In</button>
+  </div>
+
+  <!-- Quick Access -->
+  <div class="drawer-section">
+    <p class="drawer-section-label">Quick Access</p>
+
+    <button class="drawer-item" data-drawer-action="wishlist" data-requires-auth="true">
+      <i class="fas fa-heart"></i>
+      <span>My Wishlist</span>
+      <span class="drawer-badge" id="drawerWishlistCount">0</span>
+      <i class="fas fa-lock drawer-lock" id="drawerWishlistLock"></i>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+
+    <button class="drawer-item" data-drawer-action="orders" data-requires-auth="true">
+      <i class="fas fa-box"></i>
+      <span>My Orders</span>
+      <span class="drawer-badge" id="drawerOrderCount">0</span>
+      <i class="fas fa-lock drawer-lock" id="drawerOrderLock"></i>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+
+    <button class="drawer-item" data-drawer-action="track">
+      <i class="fas fa-search-location"></i>
+      <span>Track Order</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+
+    <button class="drawer-item" data-drawer-action="notifications">
+      <i class="fas fa-bell"></i>
+      <span>Notifications</span>
+      <span class="drawer-badge" id="drawerNotifCount">0</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+  </div>
+
+  <!-- Preferences -->
+  <div class="drawer-section">
+    <p class="drawer-section-label">Preferences</p>
+
+    <button class="drawer-item" data-drawer-action="settings">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+
+    <div class="drawer-item drawer-toggle-item" data-drawer-action="darkmode">
+      <i class="fas fa-moon"></i>
+      <span>Dark Mode</span>
+      <label class="drawer-switch" onclick="event.stopPropagation()">
+        <input type="checkbox" id="drawerDarkMode">
+        <span class="drawer-switch-slider"></span>
+      </label>
+    </div>
+
+    <button class="drawer-item" data-drawer-action="export">
+      <i class="fas fa-file-export"></i>
+      <span>Export Data</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+
+    <button class="drawer-item drawer-item-danger" data-drawer-action="clear">
+      <i class="fas fa-trash-alt"></i>
+      <span>Clear All Data</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <div class="drawer-footer">
+    <button class="drawer-item" data-drawer-action="about">
+      <i class="fas fa-info-circle"></i>
+      <span>About PetCare</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+
+    <button class="drawer-auth-btn" id="drawerAuthBtn">
+      <i class="fas fa-sign-in-alt" id="drawerAuthIcon"></i>
+      <span id="drawerAuthText">Login / Sign Up</span>
+    </button>
+
+    <p class="drawer-version">PetCare v2.0.0 · © 2026</p>
+  </div>
+
+</aside>
+
+<!-- ============================================ -->
+<!-- BOTTOM NAVIGATION (4 tabs only)              -->
+<!-- ============================================ -->
+<nav class="bottom-nav">
+  <a href="#" class="nav-item active" data-nav="home">
+    <i class="fas fa-home"></i><span>Home</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="care">
+    <i class="fas fa-paw"></i><span>Care</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="memories">
+    <i class="fas fa-camera-retro"></i><span>Memories</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="shop">
+    <i class="fas fa-store"></i><span>Shop</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="profile">
+    <i class="fas fa-user"></i><span>Profile</span>
+  </a>
+</nav>
+
+<!-- ============================================ -->
+<!-- BACK TO TOP                                  -->
+<!-- ============================================ -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<!-- ============================================ -->
+<!-- SCRIPTS                                      -->
+<!-- ============================================ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+<script src="api.js"></script>
+<script src="drawer.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+</html>
