@@ -1,0 +1,144 @@
+/* ============================================================ */
+/* PETCARE v3.0 — PALETTE                                        */
+/* Color Variables — Light + Dark (Coffee Theme)                 */
+/* Design System: Cozy Cartoon Aesthetic                         */
+/* ============================================================ */
+
+/* ============================================================ */
+/* LIGHT MODE                                                    */
+/* ============================================================ */
+:root {
+  /* ---------- BACKGROUNDS ---------- */
+  --pc-bg:              #F5EFE6;   /* Body — Warm Cream */
+  --pc-card:            #FAF6F0;   /* Cards — Light Cream */
+  --pc-paper:           #EDE4D3;   /* Sections — Paper Beige */
+  --pc-hero-bg:         #F5EFE6;   /* Hero — Same as body */
+  --pc-input-bg:        #FAF6F0;   /* Inputs */
+
+  /* ---------- NAVIGATION (FOREST GREEN) ---------- */
+  --pc-nav-bg:          #3A4A3A;   /* Bottom Nav — Forest Green */
+  --pc-topbar-bg:       #F5EFE6;   /* Top Bar — Cream (ALL pages) */
+  --pc-topbar-home:     #F5EFE6;   /* Home Top Bar — Cream (same) */
+  --pc-nav-active:      #FFD966;   /* Active Nav — Gold */
+  --pc-nav-inactive:    #8B9D7E;   /* Inactive Nav — Muted Sage */
+
+  /* ---------- PRIMARY (FOREST GREEN) ---------- */
+  --pc-primary:         #3A4A3A;   /* Forest Green */
+  --pc-primary-hover:   #2D3E2D;   /* Deep Forest */
+  --pc-primary-light:   #D4DEC8;   /* Soft Sage */
+
+  /* ---------- ACCENT ---------- */
+  --pc-accent:          #3A4A3A;
+  --pc-accent-light:    #5A6B4A;
+  --pc-accent-soft:     #D4DEC8;
+  --pc-accent-hover:    #2D3E2D;
+
+  /* ---------- WARM BROWN ---------- */
+  --pc-brown:           #8B6F47;
+  --pc-brown-dark:      #6B5443;
+  --pc-caramel:         #C9A961;
+  --pc-tan:             #E8D9BF;
+  --pc-sand:            #E0D5C0;
+
+  /* ---------- SEMANTIC ---------- */
+  --pc-success:         #6B9E5F;
+  --pc-success-soft:    #E8F5E9;
+  --pc-warning:         #D9A441;
+  --pc-warning-soft:    #FFF3CD;
+  --pc-danger:          #C45A4A;
+  --pc-danger-soft:     #FEE2E2;
+  --pc-info:            #7BA3C9;
+  --pc-info-soft:       #DBEAFE;
+  --pc-pink:            #D88B9E;
+  --pc-pink-soft:       #FCE7F3;
+  --pc-purple:          #9B8BB4;
+  --pc-purple-soft:     #EDE9FE;
+
+  /* ---------- TEXT ---------- */
+  --pc-text:            #3D2E1F;
+  --pc-text-2:          #6B5443;
+  --pc-text-muted:      #A89B7E;
+  --pc-placeholder:     #C4B89E;
+  --pc-text-on-dark:    #F5E6D3;
+
+  /* ---------- BORDERS & SHADOWS ---------- */
+  --pc-border:          #E0D5C0;
+  --pc-border-light:    #EDE4D3;
+  --pc-shadow-sm:       0 2px 8px rgba(139, 111, 71, 0.08);
+  --pc-shadow-md:       0 4px 15px rgba(139, 111, 71, 0.10);
+  --pc-shadow-lg:       0 8px 24px rgba(139, 111, 71, 0.14);
+
+  /* ---------- LAYOUT ---------- */
+  --pc-topnav-height:   60px;
+  --pc-bottomnav-height: 68px;
+  --pc-page-padding:    20px;
+  --pc-card-padding:    18px;
+  --pc-radius:          20px;
+  --pc-radius-sm:       12px;
+}
+
+/* ============================================================ */
+/* DARK MODE — COFFEE THEME                                      */
+/* Rule: Never pure black. Always warm coffee tones.             */
+/* ============================================================ */
+body.dark-mode {
+  /* ---------- BACKGROUNDS ---------- */
+  --pc-bg:              #1F1410;   /* Body — Espresso */
+  --pc-card:            #2A1F18;   /* Cards — Dark Roast */
+  --pc-paper:           #241A14;   /* Sections — Dark Coffee */
+  --pc-hero-bg:         #1F1410;   /* Hero — Espresso */
+  --pc-input-bg:        #2A1F18;   /* Inputs — Dark Roast */
+
+  /* ---------- NAVIGATION ---------- */
+  --pc-nav-bg:          #2D3E2D;   /* Bottom Nav — Deep Forest */
+  --pc-topbar-bg:       #1F1410;   /* Top Bar — Espresso */
+  --pc-topbar-home:     #1F1410;   /* Home Top Bar — Espresso */
+  --pc-nav-active:      #FFD966;   /* Active Nav — Gold (SAME) */
+  --pc-nav-inactive:    #8B7A66;   /* Inactive Nav */
+
+  /* ---------- PRIMARY (Green — brighter for dark) ---------- */
+  --pc-primary:         #6B9E5F;   /* Brighter Green */
+  --pc-primary-hover:   #8B9D7E;   /* Sage */
+  --pc-primary-light:   #2D3E2D;   /* Deep Forest */
+
+  /* ---------- ACCENT ---------- */
+  --pc-accent:          #8B9D7E;   /* Sage */
+  --pc-accent-light:    #A8B89A;   /* Lighter Sage */
+  --pc-accent-soft:     #2D3E2D;   /* Deep Forest */
+  --pc-accent-hover:    #6B9E5F;   /* Hover Green */
+
+  /* ---------- WARM BROWN ---------- */
+  --pc-brown:           #C9A961;   /* Caramel */
+  --pc-brown-dark:      #A89B7E;   /* Muted Brown */
+  --pc-caramel:         #E8D9BF;   /* Bright Caramel */
+  --pc-tan:             #4A3A2C;   /* Mocha */
+  --pc-sand:            #3A2C22;   /* Coffee */
+
+  /* ---------- SEMANTIC (Brighter for dark) ---------- */
+  --pc-success:         #86EFAC;
+  --pc-success-soft:    #14532D;
+  --pc-warning:         #FCD34D;
+  --pc-warning-soft:    #422006;
+  --pc-danger:          #FCA5A5;
+  --pc-danger-soft:     #450A0A;
+  --pc-info:            #93C5FD;
+  --pc-info-soft:       #1E3A8A;
+  --pc-pink:            #F9A8D4;
+  --pc-pink-soft:       #500724;
+  --pc-purple:          #C4B5FD;
+  --pc-purple-soft:     #3F1F6B;
+
+  /* ---------- TEXT ---------- */
+  --pc-text:            #F5E6D3;   /* Latte */
+  --pc-text-2:          #D4B896;   /* Cappuccino */
+  --pc-text-muted:      #A89B7E;
+  --pc-placeholder:     #6B6355;
+  --pc-text-on-dark:    #F5E6D3;
+
+  /* ---------- BORDERS & SHADOWS ---------- */
+  --pc-border:          #4A3A2C;   /* Mocha */
+  --pc-border-light:    #3A2C22;   /* Coffee */
+  --pc-shadow-sm:       0 2px 8px rgba(0, 0, 0, 0.4);
+  --pc-shadow-md:       0 4px 15px rgba(0, 0, 0, 0.5);
+  --pc-shadow-lg:       0 8px 24px rgba(0, 0, 0, 0.6);
+}

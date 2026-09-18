@@ -1,0 +1,443 @@
+/* ============================================================ */
+/* PETCARE v3.0 — ONBOARDING TOUR                                */
+/* First-time user welcome experience                            */
+/* ============================================================ */
+
+/* ============================================================ */
+/* 1. MODAL OVERLAY                                              */
+/* ============================================================ */
+#onboardingModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 20, 16, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#onboardingModal.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* ============================================================ */
+/* 2. CONTAINER                                                  */
+/* ============================================================ */
+.ob-container {
+  position: relative;
+  background: var(--pc-card);
+  border-radius: 28px;
+  padding: 40px 28px 28px;
+  max-width: 440px;
+  width: 100%;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--pc-border-light);
+  animation: obSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-align: center;
+}
+
+@keyframes obSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================================ */
+/* 3. SKIP BUTTON                                                */
+/* ============================================================ */
+.ob-skip {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 14px;
+  border-radius: 50px;
+  background: transparent;
+  border: 1.5px solid var(--pc-border-light);
+  color: var(--pc-text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.ob-skip:hover {
+  background: var(--pc-paper);
+  border-color: var(--pc-border);
+  color: var(--pc-text-2);
+}
+
+/* ============================================================ */
+/* 4. ILLUSTRATION                                               */
+/* ============================================================ */
+.ob-illustration {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ob-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pc-primary-light), var(--pc-accent-soft));
+  color: var(--pc-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  box-shadow: 0 12px 32px rgba(58, 74, 58, 0.2);
+  border: 3px solid var(--pc-card);
+  animation: obFloat 3s ease-in-out infinite;
+}
+
+@keyframes obFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.ob-emoji {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  font-size: 32px;
+  background: var(--pc-card);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border: 2px solid var(--pc-border-light);
+}
+
+/* ============================================================ */
+/* 5. CONTENT                                                    */
+/* ============================================================ */
+.ob-content {
+  margin-bottom: 24px;
+}
+
+.ob-step-counter {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--pc-accent);
+  background: var(--pc-primary-light);
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ob-title {
+  font-family: 'Caveat', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--pc-text);
+  line-height: 1.1;
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+}
+
+.ob-subtitle {
+  font-size: 14px;
+  color: var(--pc-text-2);
+  line-height: 1.55;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+/* ============================================================ */
+/* 6. FEATURES LIST                                              */
+/* ============================================================ */
+.ob-features {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.ob-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--pc-paper);
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pc-text-2);
+  line-height: 1.4;
+  transition: transform 0.2s ease;
+}
+
+.ob-feature:hover {
+  transform: translateX(4px);
+}
+
+.ob-feature i {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pc-primary-light);
+  color: var(--pc-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* ============================================================ */
+/* 7. PROGRESS DOTS                                              */
+/* ============================================================ */
+.ob-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.ob-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pc-border);
+  transition: all 0.3s ease;
+}
+
+.ob-dot.active {
+  width: 28px;
+  border-radius: 4px;
+  background: var(--pc-primary);
+}
+
+.ob-dot.done {
+  background: var(--pc-success);
+}
+
+/* ============================================================ */
+/* 8. PROGRESS BAR                                               */
+/* ============================================================ */
+.ob-progress {
+  width: 100%;
+  height: 4px;
+  background: var(--pc-paper);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.ob-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pc-primary), var(--pc-accent));
+  border-radius: 20px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================ */
+/* 9. ACTIONS                                                    */
+/* ============================================================ */
+.ob-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ob-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  font-family: inherit;
+  border: none;
+  white-space: nowrap;
+}
+
+.ob-btn-primary {
+  flex: 1.4;
+  background: var(--pc-primary);
+  color: var(--pc-text-on-dark);
+  box-shadow: 0 4px 14px rgba(58, 74, 58, 0.25);
+}
+
+.ob-btn-primary:hover {
+  background: var(--pc-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(58, 74, 58, 0.35);
+}
+
+.ob-btn-primary:active {
+  transform: translateY(0);
+}
+
+.ob-btn-ghost {
+  flex: 1;
+  background: transparent;
+  color: var(--pc-text-2);
+  border: 1.5px solid var(--pc-border);
+}
+
+.ob-btn-ghost:hover {
+  background: var(--pc-paper);
+  border-color: var(--pc-text-muted);
+  color: var(--pc-text);
+}
+
+.ob-btn i {
+  font-size: 12px;
+}
+
+/* ============================================================ */
+/* 10. DARK MODE                                                 */
+/* ============================================================ */
+body.dark-mode .ob-container {
+  background: #2A1F18;
+  border-color: #4A3A2C;
+}
+
+body.dark-mode .ob-title {
+  color: #F8FAFC;
+}
+
+body.dark-mode .ob-subtitle {
+  color: #CBD5E1;
+}
+
+body.dark-mode .ob-icon {
+  background: linear-gradient(135deg, #2D3E2D, #3F1F6B);
+  color: #C4B5FD;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .ob-feature {
+  background: #241A14;
+  color: #CBD5E1;
+}
+
+body.dark-mode .ob-feature i {
+  background: #2D3E2D;
+  color: #A8B89A;
+}
+
+body.dark-mode .ob-step-counter {
+  background: #2D3E2D;
+  color: #A8B89A;
+}
+
+body.dark-mode .ob-skip {
+  border-color: #4A3A2C;
+  color: #94A3B8;
+}
+
+body.dark-mode .ob-skip:hover {
+  background: #241A14;
+}
+
+body.dark-mode .ob-btn-ghost {
+  border-color: #4A3A2C;
+  color: #CBD5E1;
+}
+
+body.dark-mode .ob-btn-ghost:hover {
+  background: #241A14;
+}
+
+/* ============================================================ */
+/* 11. RESPONSIVE                                                */
+/* ============================================================ */
+@media (max-width: 480px) {
+  .ob-container {
+    padding: 32px 20px 22px;
+    border-radius: 24px;
+  }
+
+  .ob-illustration {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 18px;
+  }
+
+  .ob-icon {
+    font-size: 40px;
+  }
+
+  .ob-emoji {
+    width: 38px;
+    height: 38px;
+    font-size: 26px;
+  }
+
+  .ob-title {
+    font-size: 1.7rem;
+  }
+
+  .ob-subtitle {
+    font-size: 13px;
+  }
+
+  .ob-feature {
+    padding: 10px 12px;
+    font-size: 12.5px;
+  }
+
+  .ob-feature i {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .ob-btn {
+    padding: 12px 18px;
+    font-size: 13px;
+  }
+
+  .ob-actions {
+    gap: 8px;
+  }
+
+  .ob-btn-primary {
+    flex: 1;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ob-container,
+  .ob-icon {
+    animation: none !important;
+  }
+
+  .ob-progress-fill {
+    transition: none !important;
+  }
+}
