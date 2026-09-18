@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#3A4A3A">
+  <title>PetCare — Happy Tails · Healthy Lives</title>
+  
+  <!-- PWA META TAGS -->
+  <meta name="description" content="Your all-in-one pet care companion — track health, shop, book vets, and share memories.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="PetCare">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- PWA MANIFEST -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- APPLE TOUCH ICONS -->
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/icon-192.png">
+  
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/icon-72.png">
+
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="css/palette.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/profile-view.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/onboarding.css">
+  <link rel="stylesheet" href="css/demo.css">
+
+  
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- LIBRARIES -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- FIXED TOP NAV                                -->
+<!-- ============================================ -->
+<nav class="top-nav" id="topNav">
+  <div class="top-nav-left">
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <div class="brand">
+      <i class="fas fa-paw brand-icon"></i>
+      <span class="brand-name">PetCare</span>
+    </div>
+  </div>
+    <div class="top-nav-right">
+    <i class="fas fa-bell notif-icon" id="notifIcon" role="button" aria-label="Notifications" tabindex="0"></i>
+    <i class="fas fa-search search-icon" id="searchIcon" role="button" aria-label="Search" tabindex="0" style="display:none;"></i>
+  </div>
+
+  <!-- SEARCH EXPANSION (hidden by default) -->
+  <div class="nav-search-wrap" id="navSearchWrap">
+    <button class="nav-search-back" id="navSearchBack" aria-label="Close search">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <div class="nav-search-input-wrap">
+      <i class="fas fa-search search-input-icon"></i>
+      <input type="text" class="nav-search-input" id="navSearchInput" placeholder="Search users, posts..." autocomplete="off">
+      <button class="nav-search-clear" id="navSearchClear" aria-label="Clear">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================ -->
+<!-- PAGES                                        -->
+<!-- ============================================ -->
+<section class="page active" id="page-home"></section>
+<section class="page" id="page-shop"></section>
+<section class="page" id="page-store-detail"></section>
+<section class="page" id="page-care"></section>
+<section class="page" id="page-memory"></section>
+<section class="page" id="page-profile"></section>
+<section class="page" id="page-user-profile"></section>
+<section class="page" id="page-vet-profile"></section>
+<section class="page" id="page-booking"></section>
+<section class="page" id="page-appointments"></section>
+
+<!-- ============================================ -->
+<!-- BOTTOM NAVIGATION                            -->
+<!-- ============================================ -->
+<nav class="bottom-nav" id="bottomNav">
+  <a href="#" class="nav-item active" data-nav="home">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="shop">
+    <i class="fas fa-shopping-bag"></i>
+    <span>Shop</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="care">
+    <i class="fas fa-paw"></i>
+    <span>Care</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="memory">
+    <i class="fas fa-camera-retro"></i>
+    <span>Memory</span>
+  </a>
+  <a href="#" class="nav-item" data-nav="profile">
+    <i class="fas fa-user"></i>
+    <span>Profile</span>
+  </a>
+</nav>
+
+<!-- ============================================ -->
+<!-- SIDE DRAWER                                  -->
+<!-- ============================================ -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+<aside class="side-drawer" id="sideDrawer" aria-hidden="true">
+  <div class="drawer-user">
+    <div class="drawer-avatar" id="drawerAvatar">?</div>
+    <div class="drawer-user-info">
+      <p class="drawer-user-name" id="drawerUserName">Welcome</p>
+      <p class="drawer-user-email" id="drawerUserEmail">Sign in to continue</p>
+    </div>
+  </div>
+
+  <div class="drawer-signin-banner" id="drawerSigninBanner">
+    <p><i class="fas fa-lock-open"></i> Sign in to save your wishlist, orders &amp; pets</p>
+    <button class="drawer-signin-btn" id="drawerSigninBtn">Sign In</button>
+  </div>
+
+  <div class="drawer-section">
+    <p class="drawer-section-label">Quick Access</p>
+    <button class="drawer-item" data-drawer-action="cart">
+      <i class="fas fa-shopping-cart"></i>
+      <span>My Cart</span>
+      <span class="drawer-badge" id="drawerCartCount">0</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+    
+    <button class="drawer-item" data-drawer-action="wishlist">
+      <i class="fas fa-heart"></i>
+      <span>Wishlist</span>
+      <span class="drawer-badge" id="drawerWishlistCount">0</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+
+    
+    <button class="drawer-item" data-drawer-action="track">
+      <i class="fas fa-search-location"></i>
+      <span>Track Order</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+    <button class="drawer-item" data-drawer-action="notifications">
+      <i class="fas fa-bell"></i>
+      <span>Notifications</span>
+      <span class="drawer-badge" id="drawerNotifCount">0</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+  </div>
+
+  <div class="drawer-section">
+    <p class="drawer-section-label">Preferences</p>
+    <button class="drawer-item" data-drawer-action="settings">
+      <i class="fas fa-cog"></i>
+      <span>Settings</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+    <div class="drawer-item drawer-toggle-item">
+      <i class="fas fa-moon"></i>
+      <span>Dark Mode</span>
+      <label class="drawer-switch" onclick="event.stopPropagation()">
+        <input type="checkbox" id="drawerDarkMode">
+        <span class="drawer-switch-slider"></span>
+      </label>
+    </div>
+    <button class="drawer-item" data-drawer-action="export">
+      <i class="fas fa-file-export"></i>
+      <span>Export Data</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+    <button class="drawer-item drawer-item-danger" data-drawer-action="clear">
+      <i class="fas fa-trash-alt"></i>
+      <span>Clear All Data</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+  </div>
+
+  <div class="drawer-footer">
+    <button class="drawer-item" data-drawer-action="about">
+      <i class="fas fa-info-circle"></i>
+      <span>About PetCare</span>
+      <i class="fas fa-chevron-right drawer-chevron"></i>
+    </button>
+    <button class="drawer-auth-btn" id="drawerAuthBtn">
+      <i class="fas fa-sign-in-alt" id="drawerAuthIcon"></i>
+      <span id="drawerAuthText">Login / Sign Up</span>
+    </button>
+    <p class="drawer-version">PetCare v3.0.0 · 2026</p>
+  </div>
+</aside>
+
+<!-- ============================================ -->
+<!-- MODALS (containers only)                     -->
+<!-- ============================================ -->
+<div class="modal" id="sosModal"><div class="modal-content"></div></div>
+<div class="modal" id="firstaidModal"><div class="modal-content"></div></div>
+<div class="modal" id="fosterModal"><div class="modal-content"></div></div>
+<div class="modal" id="quickViewModal"><div class="modal-content"></div></div>
+<div class="modal" id="wishlistModal"><div class="modal-content modal-large"></div></div>
+<div class="modal" id="checkoutModal"><div class="modal-content"></div></div>
+<div class="modal" id="trackingModal"><div class="modal-content"></div></div>
+<div class="modal" id="reviewModal"><div class="modal-content"></div></div>
+<div class="modal" id="loginModal"><div class="modal-content"></div></div>
+<div class="modal" id="petModal"><div class="modal-content"></div></div>
+<div class="modal" id="healthLogModal"><div class="modal-content"></div></div>
+<div class="modal" id="vaxModal"><div class="modal-content"></div></div>
+<div class="modal" id="medModal"><div class="modal-content"></div></div>
+<div class="modal" id="reminderModal"><div class="modal-content"></div></div>
+<div class="modal" id="editProfileModal"><div class="modal-content"></div></div>
+<div class="modal" id="notifModal"><div class="modal-content modal-large"></div></div>
+<div class="modal" id="aboutModal"><div class="modal-content"></div></div>
+<div class="modal" id="userTypeModal"><div class="modal-content"></div></div>
+<div class="modal" id="vetLicenseModal"><div class="modal-content"></div></div>
+<div class="modal" id="memoryPostModal"><div class="modal-content"></div></div>
+<div class="modal" id="commentModal"><div class="modal-content"></div></div>
+<div class="modal" id="bookingModal"><div class="modal-content"></div></div>
+<div class="modal" id="createStoreModal"><div class="modal-content"></div></div>
+<div class="modal" id="vetApplicationModal"><div class="modal-content"></div></div>
+<div class="modal" id="tipsArticleModal"><div class="modal-content"></div></div>
+
+<!-- ============================================ -->
+<!-- ONBOARDING MODAL (separate container)         -->
+<!-- ============================================ -->
+<div id="onboardingModal"></div>
+
+<!-- ============================================ -->
+<!-- CART SIDEBAR                                 -->
+<!-- ============================================ -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Shopping Cart</h3>
+    <i class="fas fa-times close-cart" id="closeCart"></i>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="empty-cart">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cartTotal">$0.00</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-message" id="toastMessage"></span>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- SCRIPTS -->
+<!-- LAYER 1: CORE (Foundation — must load first) -->
+<script src="js/app.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui/skeleton.js"></script>
+<script src="js/drawer.js"></script>
+<script src="js/pwa.js"></script>
+<script src="js/onboarding.js"></script>
+<script src="js/demo-data.js"></script>
+<script src="js/demo.js"></script>
+  
+
+<!-- LAYER 2: FEATURES (Depend on core) -->
+<script src="js/home.js"></script>
+<script src="js/shop.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/tracking.js"></script>
+<script src="js/notification.js"></script>
+<script src="js/appointments.js"></script>
+<script src="js/care.js"></script>
+
+<!-- LAYER 3: SOCIAL & PROFILE (Depend on features) -->
+<script src="js/profile-view.js"></script>
+<script src="js/memory.js"></script>
+<script src="js/search.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
