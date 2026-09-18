@@ -1,0 +1,67 @@
+# ============================================================
+# PETCARE — GITIGNORE
+# ============================================================
+
+# ---------- OS FILES ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ---------- EDITOR FILES ----------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ---------- ACODE EDITOR ----------
+.acode/
+.acode_history/
+
+# ---------- NODE (if added later) ----------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# ---------- ENVIRONMENT ----------
+.env
+.env.local
+.env.*.local
+
+# ---------- BUILD OUTPUT ----------
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# ---------- LOGS ----------
+logs/
+*.log
+
+# ---------- TEMP FILES ----------
+tmp/
+temp/
+*.tmp
+
+# ---------- TEST OUTPUT ----------
+coverage/
+.nyc_output/
+
+# ---------- SECRETS ----------
+secrets.json
+config.local.js
+
+# ---------- HACKATHON / DEV NOTES ----------
+TODO.local.md
+notes.local.md
+scratch/
