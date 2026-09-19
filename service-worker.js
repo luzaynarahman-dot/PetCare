@@ -3,8 +3,8 @@
 /* Offline caching + asset management                            */
 /* ============================================================ */
 
-const CACHE_NAME = 'petcare-v3-cache-v3';
-const RUNTIME_CACHE = 'petcare-v3-runtime-v3';
+const CACHE_NAME = 'petcare-v3-cache-v2';
+const RUNTIME_CACHE = 'petcare-v3-runtime-v2';
 
 /* ============================================================ */
 /* 1. FILES TO CACHE ON INSTALL                                  */
