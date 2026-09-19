@@ -235,11 +235,11 @@ PetCare/
 
 | Home | Care | Foster |
 |------|------|--------|
-| ![Home](docs/screenshots/01-home.png) | ![Care](docs/screenshots/03-care-today.png) | ![Foster](docs/screenshots/04-foster.png) |
+| ![Home](docs/screenshots/01-home.jpg) | ![Care](docs/screenshots/03-care-today.jpg) | ![Foster](docs/screenshots/04-foster.jpg) |
 
-| Memory | Shop | Dark Mode |
+| Memory | Shop | SOS Modal |
 |--------|------|-----------|
-| ![Memory](docs/screenshots/05-memory.png) | ![Shop](docs/screenshots/02-shop.png) | ![Dark](docs/screenshots/09-dark-mode.png) |
+| ![Memory](docs/screenshots/05-memory.jpg) | ![Shop](docs/screenshots/02-shop.png) | ![SOS](docs/screenshots/09-sos.jpg) |
 
 ---
 
